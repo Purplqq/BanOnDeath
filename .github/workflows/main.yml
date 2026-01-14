@@ -1,21 +1,22 @@
-name: Build Plugin
+name: Build BanOnDeath Plugin
 
+# Trigger workflow on pushes to main
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch: # allows manual run
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-      - run: mvn -B package
-      - uses: actions/upload-artifact@v4
-        with:
-          name: BanOnDeath
-          path: target/*.jar
 
+    steps:
+      # 1. Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Setup Java 17
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version
