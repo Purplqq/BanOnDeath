@@ -14,7 +14,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - run: mvn -B package
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: BanOnDeath
           path: target/*.jar
+
