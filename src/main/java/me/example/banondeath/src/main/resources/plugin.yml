@@ -1,0 +1,4 @@
+name: BanOnDeath
+version: 1.0
+main: me.example.banondeath.BanOnDeath
+api-version: 1.20
