@@ -13,6 +13,7 @@ public class BanOnDeath extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
+        getLogger().info("BanOnDeath plugin enabled");
     }
 
     @EventHandler
@@ -21,13 +22,13 @@ public class BanOnDeath extends JavaPlugin implements Listener {
 
         Bukkit.getBanList(BanList.Type.NAME).addBan(
                 player.getName(),
-                "You died.",
+                "You died. Hardcore rules.",
                 null,
                 "BanOnDeath"
         );
 
         Bukkit.getScheduler().runTask(this, () ->
-                player.kickPlayer("§cYou died.\n§7You are banned.")
+                player.kickPlayer("§cYou died.\n§7You are now banned.")
         );
     }
 }
