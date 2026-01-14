@@ -1,6 +1,5 @@
 name: Build BanOnDeath Plugin
 
-# Trigger workflow on pushes to main branch and manual runs
 on:
   push:
     branches: [ "main" ]
@@ -11,22 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 2. Set up Java 17
       - name: Setup Java 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # 3. Build the plugin with Maven
-      - name: Build with Maven
+      - name: Build plugin with Maven
         run: mvn clean package
 
-      # 4. Upload the resulting JAR as an artifact
       - name: Upload plugin JAR
         uses: actions/upload-artifact@v4
         with:
